@@ -3,10 +3,6 @@ Package search contains everything about search
 */
 package search
 
-import(
-	"fmt"
-)
-
 func swap(a *int,b *int){
 	tmp := *a
 	*a = *b
@@ -31,6 +27,5 @@ func partition(arr *[]int,l int,r int,n int)(int,int){
 			current ++
 		}
 	}
-	fmt.Println(*arr)
-	return current,end
+	return start,end
 }
