@@ -3,11 +3,24 @@ Package search contains everything about search
 */
 package search
 
+import (
+	"math/rand"
+)
+
+/*
+utility functions
+*/
+
 // swap is only visible within the package
 func swap(a *int, b *int) {
 	tmp := *a
 	*a = *b
 	*b = tmp
+}
+
+//
+func random(min int, max int) int {
+	return rand.Intn(max-min) + min
 }
 
 // Partition moves the small number to head ,big number to end

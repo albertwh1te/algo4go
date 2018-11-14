@@ -2,14 +2,9 @@ package search
 
 import (
 	"fmt"
-	"math/rand"
 	"sort"
 	"testing"
 )
-
-func random(min int, max int) int {
-	return rand.Intn(max-min) + min
-}
 
 // generate random slice
 func randomSlice(upper int) []int {
