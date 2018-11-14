@@ -3,6 +3,7 @@ Package search contains everything about search
 */
 package search
 
+// swap is only visible within the package
 func swap(a *int, b *int) {
 	tmp := *a
 	*a = *b
@@ -28,4 +29,8 @@ func Partition(arr *[]int, l int, r int, n int) (int, int) {
 		}
 	}
 	return start, end
+}
+
+// QuickSort is a randomize sorting algorithms
+func QuickSort(arr *[]int, l int, r int) {
 }
