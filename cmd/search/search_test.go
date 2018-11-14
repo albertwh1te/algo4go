@@ -3,6 +3,7 @@ package search
 import (
 	"fmt"
 	"math/rand"
+	"sort"
 	"testing"
 )
 
@@ -10,15 +11,22 @@ func random(min int, max int) int {
 	return rand.Intn(max-min) + min
 }
 
+// generate random slice
+func randomSlice(upper int) []int {
+	length := random(10, upper)
+	// use slice because length is not a constant
+	result := make([]int, length)
+	for index := 0; index < length; index++ {
+		result[index] = random(1, upper)
+	}
+	return result
+}
+
 // TestPartition generate test slice and check it's partition
 func TestPartition(t *testing.T) {
 	const UPPER int = 1000
-	length := random(10, UPPER)
-	// use slice beacse length is not const
-	test := make([]int, length)
-	for index := 0; index < length; index++ {
-		test[index] = random(1, UPPER)
-	}
+	test := randomSlice(UPPER)
+	length := len(test)
 	pivot := test[length-1]
 	fmt.Println("pivot: ", pivot)
 	fmt.Println("origin arr: ", test)
@@ -35,5 +43,16 @@ func TestPartition(t *testing.T) {
 				t.Errorf("small index check error")
 			}
 		}
+	}
+}
+
+// TestQuickSort compare quicksort result with built in Sort
+func TestQuickSort(t *testing.T) {
+	const UPPER int = 13
+	test := randomSlice(UPPER)
+	QuickSort(&test, 0, len(test)-1)
+	// sort.Ints(test)
+	if !sort.IntsAreSorted(test) {
+		t.Errorf("%v is not sorted", test)
 	}
 }
