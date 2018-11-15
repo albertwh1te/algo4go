@@ -18,7 +18,7 @@ func swap(a *int, b *int) {
 	*b = tmp
 }
 
-//
+// open interval
 func random(min int, max int) int {
 	return rand.Intn(max-min) + min
 }
@@ -45,5 +45,11 @@ func Partition(arr *[]int, l int, r int, n int) (int, int) {
 }
 
 // QuickSort is a randomize sorting algorithms
-func QuickSort(arr *[]int, l int, r int) {
+func QuickSort(arr *[]int, left int, right int) {
+	if right > left {
+		// randomize pivot
+		start, end := Partition(arr, left, right, random(left, right))
+		QuickSort(arr, left, start-1)
+		QuickSort(arr, end+1, right)
+	}
 }
