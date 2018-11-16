@@ -1,4 +1,4 @@
-package search
+package algo4go
 
 import (
 	"fmt"

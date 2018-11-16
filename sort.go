@@ -1,27 +1,4 @@
-/*
-Package search contains everything about search
-*/
-package search
-
-import (
-	"math/rand"
-)
-
-/*
-utility functions
-*/
-
-// swap is only visible within the package
-func swap(a *int, b *int) {
-	tmp := *a
-	*a = *b
-	*b = tmp
-}
-
-// open interval
-func random(min int, max int) int {
-	return rand.Intn(max-min) + min
-}
+package algo4go
 
 // Partition moves the small number to head ,big number to end
 func Partition(arr *[]int, l int, r int, n int) (int, int) {

@@ -1,7 +1,4 @@
-/*
-Package heap contains heap implement
-*/
-package heap
+package algo4go
 
 // MaxHeap always has maxium at root
 type MaxHeap struct {
