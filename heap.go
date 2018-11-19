@@ -40,7 +40,6 @@ func (heap *MaxHeap) MaxHeapify(i int) {
 	largest := i
 	r := heap.right(i)
 	l := heap.left(i)
-	fmt.Println(heap.arr[i], heap.arr[l], heap.arr[r], i, l, r, "ffff")
 	if l > 0 && heap.arr[l] > heap.arr[i] {
 		largest = l
 	} else if r > 0 && heap.arr[r] > heap.arr[i] {
