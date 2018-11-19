@@ -46,7 +46,6 @@ func TestQuickSort(t *testing.T) {
 	const UPPER int = 13
 	test := randomSlice(UPPER)
 	QuickSort(&test, 0, len(test)-1)
-	// sort.Ints(test)
 	if !sort.IntsAreSorted(test) {
 		t.Errorf("%v is not sorted", test)
 	}
