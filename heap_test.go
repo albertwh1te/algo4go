@@ -1,21 +1,30 @@
 package algo4go
 
 import (
-	"fmt"
 	"testing"
 )
 
 // TestHeap generate test slice and check it's partition
 func TestHeap(t *testing.T) {
-	const UPPER int = 12
-	test := randomSlice(UPPER)
-	var heap MaxHeap
-	heap.arr = test
-	heap.size = len(test)
-	t.Run("basic setting", func(t *testing.T) {
-		heapifyIndex := random(0, heap.size-1)
-		fmt.Println("the origin heap is: ", heap.arr, "\nheapify index is", heapifyIndex)
-		heap.MaxHeapify(heapifyIndex)
-		fmt.Println("the heapify heap is: ", heap.arr)
+	log("Heap Test start")
+	// init some viriable
+	var heap1 MaxHeap
+	var test []int
+	times := 200
+
+	t.Run("heap insert", func(t *testing.T) {
+		for time := 1; time < times; time++ {
+			// rest values
+			test = randomSlice(7, 103)
+			heap1 = MaxHeap{[]int{}, 0}
+			for i := 0; i < len(test); i++ {
+				heap1.HeapInsert(test[i])
+			}
+			if !(maxIntSlice(test) == heap1.arr[0]) {
+				t.Errorf("max heap build fail :( biggest in origin is %v top on max heap is %v ", maxIntSlice(test), heap1.arr[0])
+				t.Errorf("heap is %v", heap1.arr)
+				t.Errorf("test is %v", test)
+			}
+		}
 	})
 }
