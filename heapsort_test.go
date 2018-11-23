@@ -26,6 +26,8 @@ func TestHeap(t *testing.T) {
 	})
 	t.Run("heapsort test", func(t *testing.T) {
 		var test []int
+		// add empty test to keep 100% test coverage
+		HeapSort(&test)
 		times := 200
 		for time := 1; time < times; time++ {
 			test = randomSlice(7, 103)
