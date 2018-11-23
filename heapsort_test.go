@@ -1,6 +1,7 @@
 package algo4go
 
 import (
+	"sort"
 	"testing"
 )
 
@@ -23,4 +24,16 @@ func TestHeap(t *testing.T) {
 			}
 		}
 	})
+	t.Run("heapsort test", func(t *testing.T) {
+		var test []int
+		times := 200
+		for time := 1; time < times; time++ {
+			test = randomSlice(7, 103)
+			HeapSort(&test)
+			if !sort.IntsAreSorted(test) {
+				t.Errorf("%v is not sorted", test)
+			}
+		}
+	})
+
 }
