@@ -1,6 +1,6 @@
 package algo4go
 
-// Partition moves the small number to head ,big number to end
+// Partition moves the small number to head, big number to end, same to middle.
 func Partition(arr *[]int, l int, r int, n int) (int, int) {
 	start := l
 	current := l
