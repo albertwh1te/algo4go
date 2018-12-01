@@ -3,6 +3,7 @@ package algo4go
 import (
 	"fmt"
 	"math/rand"
+	"time"
 )
 
 // swap is only visible within the package
@@ -14,6 +15,8 @@ func swap(a *int, b *int) {
 
 // random range open interval
 func random(min int, max int) int {
+	// generate seed before everything happends
+	rand.Seed(time.Now().UTC().UnixNano())
 	return rand.Intn(max-min) + min
 }
 
