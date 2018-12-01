@@ -11,7 +11,7 @@ func TestHeap(t *testing.T) {
 	// init some viriable
 	var test []int
 	times := 200
-	t.Run("heap insert", func(t *testing.T) {
+	t.Run("test heap insert", func(t *testing.T) {
 		for time := 1; time < times; time++ {
 			// rest values
 			test = randomSlice(7, 103)
@@ -24,7 +24,7 @@ func TestHeap(t *testing.T) {
 			}
 		}
 	})
-	t.Run("heapsort test", func(t *testing.T) {
+	t.Run("test heapsort", func(t *testing.T) {
 		var test []int
 		// add empty test to keep 100% test coverage
 		HeapSort(&test)
@@ -37,5 +37,4 @@ func TestHeap(t *testing.T) {
 			}
 		}
 	})
-
 }

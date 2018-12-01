@@ -46,7 +46,7 @@ func randomSlice(minlength int, maxlength int) []int {
 	return result
 }
 
-// simple log function for test only print value to termial
+// simple log function for test only print value to terminal
 func log(a ...interface{}) {
 	fmt.Println(a...)
 }

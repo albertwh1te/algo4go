@@ -14,16 +14,16 @@ func RandomMatrix(row int, col int) [][]int {
 	matrix := EmptyMatrix(row, col)
 	for r := 0; r < row; r++ {
 		for c := 0; c < col; c++ {
-			matrix[r][c] = random(1, 993)
+			// use 10~99 for good print result
+			matrix[r][c] = random(10, 99)
 		}
 	}
 	return matrix
 }
 
-//LogMatrix is a function print 2-D matrix line by line
+// LogMatrix is a function print 2-D matrix line by line
 func LogMatrix(m [][]int) {
 	for i := 0; i < len(m); i++ {
-		// https://stackoverflow.com/a/31483763/5555392
 		if i == 0 {
 			log("[", m[i])
 		} else if i == len(m)-1 {
@@ -31,5 +31,33 @@ func LogMatrix(m [][]int) {
 		} else {
 			log(" ", m[i])
 		}
+	}
+}
+
+// RotateMatrix clockwise rotation 90
+func RotateMatrix(m *[][]int) {
+	topRow := 0
+	topCol := 0
+	downRow := len(*m) - 1
+	downCol := len((*m)[0]) - 1
+	for topRow < downRow {
+		rotateEdge(m, topRow, topCol, downRow, downCol)
+		topRow++
+		topCol++
+		downRow--
+		downCol--
+	}
+}
+
+func rotateEdge(m *[][]int, topRow, topCol, downRow, downCol int) {
+	times := downRow - topRow
+	// save first value (topRow,topCOl)
+	var tmp int
+	for i := 0; i < times; i++ {
+		tmp = (*m)[topRow][topCol+i]
+		(*m)[topRow][topCol+i] = (*m)[downRow-i][topCol]
+		(*m)[downRow-i][topCol] = (*m)[downRow][downCol-i]
+		(*m)[downRow][downCol-i] = (*m)[topRow+i][downCol]
+		(*m)[topRow+i][downCol] = tmp
 	}
 }

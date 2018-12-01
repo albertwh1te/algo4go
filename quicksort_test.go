@@ -5,8 +5,8 @@ import (
 	"testing"
 )
 
-// TestPartition generate test slice and check it's partition
-func TestPartition(t *testing.T) {
+// testPartition generate test slice and check it's partition
+func testPartition(t *testing.T) {
 	var test []int
 	times := 200
 	for time := 1; time < times; time++ {
@@ -28,8 +28,8 @@ func TestPartition(t *testing.T) {
 	}
 }
 
-// TestQuickSort compare quicksort result with built in Sort
-func TestQuickSort(t *testing.T) {
+// testQuickSort compare quicksort result with built in Sort
+func testQuickSort(t *testing.T) {
 	var test []int
 	times := 200
 	for time := 1; time < times; time++ {
@@ -39,4 +39,14 @@ func TestQuickSort(t *testing.T) {
 			t.Errorf("%v is not sorted", test)
 		}
 	}
+}
+
+// TestQuickSort is main function for this test
+func TestQuickSort(t *testing.T) {
+	t.Run("test partition", func(t *testing.T) {
+		testPartition(t)
+	})
+	t.Run("test quicksort", func(t *testing.T) {
+		testPartition(t)
+	})
 }
