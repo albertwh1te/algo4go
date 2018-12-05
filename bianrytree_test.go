@@ -9,13 +9,17 @@ func testMaxDepth(t *testing.T, F BinaryNode) {
 func testTraversal(t *testing.T, F BinaryNode) {
 	PreOrderResult := []interface{}{"F", "B", "A", "D", "C", "E", "G", "I", "H"}
 	if !testEqual(PreOrderRecursion(F, []interface{}{}), PreOrderResult) {
+		t.Error("pre order recursion traversal fail!")
+	}
+	if !testEqual(PreOrder(F), PreOrderResult) {
+		log(PreOrder(F))
 		t.Error("pre order traversal fail!")
 	}
 }
 
 func TestBinaryTree(t *testing.T) {
-	// test case from wikipeidia
-	//	https://en.wikipedia.org/wiki/Tree_traversal
+	// test case from wikipedia
+	// https://en.wikipedia.org/wiki/Tree_traversal
 	A := NewBinaryNode("A")
 	B := NewBinaryNode("B")
 	C := NewBinaryNode("C")
