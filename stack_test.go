@@ -13,4 +13,7 @@ func TestStack(t *testing.T) {
 	fmt.Println(s.Pop())
 	fmt.Println(s.Pop())
 	fmt.Println(s.Pop())
+	if s.Pop() != nil {
+		t.Error("empty error")
+	}
 }
