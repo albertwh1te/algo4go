@@ -38,7 +38,7 @@ func PreOrderRecursion(root BinaryNode, results []interface{}) []interface{} {
 	return results
 }
 
-// PreOrder parent node is processed before any of its child nodes is done.
+// PreOrder push right node to stack first , and push left  node to stack
 func PreOrder(root BinaryNode) []interface{} {
 	results := []interface{}{}
 	current := &root
@@ -52,6 +52,36 @@ func PreOrder(root BinaryNode) []interface{} {
 		}
 		if current.left != nil {
 			stack.Push(current.left)
+		}
+	}
+	return results
+}
+
+// InOrderRecursion is a topologically sorted one, because a parent node is processed before any of its child nodes is done.
+func InOrderRecursion(root BinaryNode, results []interface{}) []interface{} {
+	if root.left != nil {
+		results = InOrderRecursion(*root.left, results)
+	}
+	results = append(results, root.value)
+	if root.right != nil {
+		results = InOrderRecursion(*root.right, results)
+	}
+	return results
+}
+
+// InOrder left mid right
+func InOrder(root BinaryNode) []interface{} {
+	results := []interface{}{}
+	stack := NewStack()
+	current := &root
+	for !stack.Empty() || current != nil {
+		if current != nil {
+			stack.Push(current)
+			current = current.left
+		} else {
+			current = stack.Pop().(*BinaryNode)
+			results = append(results, current.value)
+			current = current.right
 		}
 	}
 	return results

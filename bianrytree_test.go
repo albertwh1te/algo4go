@@ -15,6 +15,14 @@ func testTraversal(t *testing.T, F BinaryNode) {
 		log(PreOrder(F))
 		t.Error("pre order traversal fail!")
 	}
+	InOrderResult := []interface{}{"A", "B", "C", "D", "E", "F", "G", "H", "I"}
+	if !testEqual(InOrderRecursion(F, []interface{}{}), InOrderResult) {
+		t.Error("in order recursion traversal fail!")
+	}
+	if !testEqual(InOrder(F), InOrderResult) {
+		t.Error("pre order traversal fail!")
+	}
+
 }
 
 func TestBinaryTree(t *testing.T) {
