@@ -37,3 +37,22 @@ func PreOrderRecursion(root BinaryNode, results []interface{}) []interface{} {
 	}
 	return results
 }
+
+// PreOrder parent node is processed before any of its child nodes is done.
+func PreOrder(root BinaryNode) []interface{} {
+	results := []interface{}{}
+	current := &root
+	stack := NewStack()
+	stack.Push(current)
+	for !stack.Empty() {
+		current := stack.Pop().(*BinaryNode)
+		results = append(results, current.value)
+		if current.right != nil {
+			stack.Push(current.right)
+		}
+		if current.left != nil {
+			stack.Push(current.left)
+		}
+	}
+	return results
+}
