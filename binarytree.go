@@ -101,7 +101,6 @@ func PostOrderRecursion(root BinaryNode, results []interface{}) []interface{} {
 }
 
 // PostOrder run changed preorder travel and put it's result into stack
-// TODO: implement me !
 func PostOrder(root BinaryNode) []interface{} {
 	results := []interface{}{}
 	stack1 := NewStack()
