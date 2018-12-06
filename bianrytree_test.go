@@ -3,7 +3,9 @@ package algo4go
 import "testing"
 
 func testMaxDepth(t *testing.T, F BinaryNode) {
-	log(MaxDepth(F))
+	if MaxDepth(F) != 4 {
+		t.Error("maxdepth check fail!")
+	}
 }
 
 func testTraversal(t *testing.T, F BinaryNode) {
@@ -21,6 +23,13 @@ func testTraversal(t *testing.T, F BinaryNode) {
 	}
 	if !testEqual(InOrder(F), InOrderResult) {
 		t.Error("pre order traversal fail!")
+	}
+	PostOrderResult := []interface{}{"A", "C", "E", "D", "B", "H", "I", "G", "F"}
+	if !testEqual(PostOrderRecursion(F, []interface{}{}), PostOrderResult) {
+		t.Error("post order recursion traversal fail!")
+	}
+	if !testEqual(PostOrder(F), PostOrderResult) {
+		t.Error("post order traversal fail!")
 	}
 
 }

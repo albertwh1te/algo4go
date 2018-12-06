@@ -23,7 +23,7 @@ func MaxDepth(root BinaryNode) int {
 	if root.right == nil {
 		return MaxDepth(*root.left) + 1
 	}
-	return MaxDepth(*root.left) + MaxDepth(*root.right) + 1
+	return map[bool]int{true: MaxDepth(*root.left), false: MaxDepth(*root.right)}[MaxDepth(*root.left) > MaxDepth(*root.right)] + 1
 }
 
 // PreOrderRecursion parent node is processed before any of its child nodes is done.
@@ -58,6 +58,7 @@ func PreOrder(root BinaryNode) []interface{} {
 }
 
 // InOrderRecursion is a topologically sorted one, because a parent node is processed before any of its child nodes is done.
+// NOTE:In a binary search tree, in-order traversal retrieves data in sorted orde
 func InOrderRecursion(root BinaryNode, results []interface{}) []interface{} {
 	if root.left != nil {
 		results = InOrderRecursion(*root.left, results)
@@ -83,6 +84,44 @@ func InOrder(root BinaryNode) []interface{} {
 			results = append(results, current.value)
 			current = current.right
 		}
+	}
+	return results
+}
+
+// PostOrderRecursion : right left mid
+func PostOrderRecursion(root BinaryNode, results []interface{}) []interface{} {
+	if root.left != nil {
+		results = PostOrderRecursion(*root.left, results)
+	}
+	if root.right != nil {
+		results = PostOrderRecursion(*root.right, results)
+	}
+	results = append(results, root.value)
+	return results
+}
+
+// PostOrder run changed preorder travel and put it's result into stack
+// TODO: implement me !
+func PostOrder(root BinaryNode) []interface{} {
+	results := []interface{}{}
+	stack1 := NewStack()
+	stack2 := NewStack()
+	current := &root
+	stack1.Push(current)
+	for !stack1.Empty() {
+		current = stack1.Pop().(*BinaryNode)
+		stack2.Push(current.value)
+		if current.left != nil {
+			stack1.Push(current.left)
+		}
+		if current.right != nil {
+			stack1.Push(current.right)
+		}
+
+	}
+	// mid left right to right left mid
+	for !stack2.Empty() {
+		results = append(results, stack2.Pop())
 	}
 	return results
 }
