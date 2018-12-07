@@ -3,6 +3,13 @@ package algo4go
 import "testing"
 
 func testSerialize(t *testing.T, F BinaryNode) {
+	// test empty
+	if !(SerializeBinaryTree(nil) == "#") {
+		t.Error("serialize empty tree fail!")
+	}
+	if !(DeserializeBinaryTree("#") == NewBinaryNode("")) {
+		t.Error("derialize empty tree fail!")
+	}
 	serializedTree := SerializeBinaryTree(&F)
 	if !(serializedTree == "F_B_G_A_D_#_I_#_#_C_E_H_#_#_#_#_#_#_#") {
 		t.Error("serialize tree fail!")
@@ -73,6 +80,9 @@ func TestBinaryTree(t *testing.T) {
 	D.right = &E
 	G.right = &I
 	I.left = &H
+	t.Run("test string tree", func(t *testing.T) {
+		log(F, B, G, A, D, I, C, E, H)
+	})
 	t.Run("test max depth", func(t *testing.T) { testMaxDepth(t, F) })
 	t.Run("test traversal", func(t *testing.T) { testTraversal(t, F) })
 	t.Run("test serialize", func(t *testing.T) { testSerialize(t, F) })
