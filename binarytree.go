@@ -1,12 +1,30 @@
 package algo4go
 
-import "strings"
+import (
+	"fmt"
+	"strings"
+)
 
 // BinaryNode construct binary tree
 type BinaryNode struct {
 	value interface{}
 	left  *BinaryNode
 	right *BinaryNode
+}
+
+func (node BinaryNode) String() string {
+	result := fmt.Sprintf("%v", node.value)
+	if node.left != nil {
+		result = fmt.Sprintf("%v-", node.left.value) + result
+	} else {
+		result = "nil-" + result
+	}
+	if node.right != nil {
+		result += fmt.Sprintf("-%v", node.right.value)
+	} else {
+		result += "-nil"
+	}
+	return result
 }
 
 // NewBinaryNode construct new binary node with no child
@@ -154,7 +172,7 @@ func LevelTraversal(root BinaryNode) []interface{} {
 // Require Binary Node value type is string
 func SerializeBinaryTree(node *BinaryNode) string {
 	if node == nil {
-		return "@"
+		return "#"
 	}
 	results := make([]string, 0)
 	queue1 := make([]*BinaryNode, 0)
@@ -171,8 +189,44 @@ func SerializeBinaryTree(node *BinaryNode) string {
 			}
 			queue1 = queue1[1:]
 		}
-
 		queue1, queue2 = queue2, queue1
 	}
 	return strings.Join(results, "_")
+}
+
+// DeserializeBinaryTree convert string to binary tree root node
+func DeserializeBinaryTree(raw string) BinaryNode {
+	if raw == "#" {
+		return NewBinaryNode("")
+	}
+	queue1 := make([]*BinaryNode, 0)
+	queue2 := make([]*BinaryNode, 0)
+	rawSlice := strings.Split(raw, "_")
+	root := NewBinaryNode(rawSlice[0])
+	rawSlice = rawSlice[1:]
+	queue1 = append(queue1, &root)
+	for len(queue1) > 0 {
+		for len(queue1) > 0 {
+			c := queue1[0]
+			if rawSlice[0] != "#" {
+				l := NewBinaryNode(rawSlice[0])
+				c.left = &l
+				queue2 = append(queue2, &l)
+			} else {
+				c.left = nil
+			}
+			rawSlice = rawSlice[1:]
+			if rawSlice[0] != "#" {
+				r := NewBinaryNode(rawSlice[0])
+				c.right = &r
+				queue2 = append(queue2, &r)
+			} else {
+				c.right = nil
+			}
+			rawSlice = rawSlice[1:]
+			queue1 = queue1[1:]
+		}
+		queue1, queue2 = queue2, queue1
+	}
+	return root
 }

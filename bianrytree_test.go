@@ -7,6 +7,12 @@ func testSerialize(t *testing.T, F BinaryNode) {
 	if !(serializedTree == "F_B_G_A_D_#_I_#_#_C_E_H_#_#_#_#_#_#_#") {
 		t.Error("serialize tree fail!")
 	}
+	newRoot := DeserializeBinaryTree(serializedTree)
+	PreOrderResult := []interface{}{"F", "B", "A", "D", "C", "E", "G", "I", "H"}
+	if !testEqual(PreOrderRecursion(newRoot, []interface{}{}), PreOrderResult) {
+		log(PreOrderRecursion(newRoot, []interface{}{}))
+		t.Error("deserialize recursion traversal fail!")
+	}
 
 }
 
