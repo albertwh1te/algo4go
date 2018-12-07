@@ -1,5 +1,7 @@
 package algo4go
 
+import "strings"
+
 // BinaryNode construct binary tree
 type BinaryNode struct {
 	value interface{}
@@ -123,4 +125,54 @@ func PostOrder(root BinaryNode) []interface{} {
 		results = append(results, stack2.Pop())
 	}
 	return results
+}
+
+// LevelTraversal traversal tree from top to bottom
+func LevelTraversal(root BinaryNode) []interface{} {
+	results := []interface{}{}
+	// TODO: implement a queue
+	queue1 := make([]BinaryNode, 0)
+	queue2 := make([]BinaryNode, 0)
+	queue1 = append(queue1, root)
+	for len(queue1) > 0 {
+		for len(queue1) > 0 {
+			results = append(results, queue1[0].value)
+			if queue1[0].left != nil {
+				queue2 = append(queue2, *queue1[0].left)
+			}
+			if queue1[0].right != nil {
+				queue2 = append(queue2, *queue1[0].right)
+			}
+			queue1 = queue1[1:]
+		}
+		queue1, queue2 = queue2, queue1
+	}
+	return results
+}
+
+// SerializeBinaryTree serialize binary tree to string
+// Require Binary Node value type is string
+func SerializeBinaryTree(node *BinaryNode) string {
+	if node == nil {
+		return "@"
+	}
+	results := make([]string, 0)
+	queue1 := make([]*BinaryNode, 0)
+	queue2 := make([]*BinaryNode, 0)
+	queue1 = append(queue1, node)
+	for len(queue1) > 0 {
+		for len(queue1) > 0 {
+			if queue1[0] != nil {
+				results = append(results, queue1[0].value.(string))
+				queue2 = append(queue2, queue1[0].left)
+				queue2 = append(queue2, queue1[0].right)
+			} else {
+				results = append(results, "#")
+			}
+			queue1 = queue1[1:]
+		}
+
+		queue1, queue2 = queue2, queue1
+	}
+	return strings.Join(results, "_")
 }

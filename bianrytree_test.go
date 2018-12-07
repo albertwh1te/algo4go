@@ -2,6 +2,14 @@ package algo4go
 
 import "testing"
 
+func testSerialize(t *testing.T, F BinaryNode) {
+	serializedTree := SerializeBinaryTree(&F)
+	if !(serializedTree == "F_B_G_A_D_#_I_#_#_C_E_H_#_#_#_#_#_#_#") {
+		t.Error("serialize tree fail!")
+	}
+
+}
+
 func testMaxDepth(t *testing.T, F BinaryNode) {
 	if MaxDepth(F) != 4 {
 		t.Error("maxdepth check fail!")
@@ -31,6 +39,11 @@ func testTraversal(t *testing.T, F BinaryNode) {
 	if !testEqual(PostOrder(F), PostOrderResult) {
 		t.Error("post order traversal fail!")
 	}
+	LevelTraversalResult := []interface{}{"F", "B", "G", "A", "D", "I", "C", "E", "H"}
+	if !testEqual(LevelTraversal(F), LevelTraversalResult) {
+		log(LevelTraversal(F), "level traversal")
+		t.Error("level traversal fail!")
+	}
 
 }
 
@@ -56,4 +69,5 @@ func TestBinaryTree(t *testing.T) {
 	I.left = &H
 	t.Run("test max depth", func(t *testing.T) { testMaxDepth(t, F) })
 	t.Run("test traversal", func(t *testing.T) { testTraversal(t, F) })
+	t.Run("test serialize", func(t *testing.T) { testSerialize(t, F) })
 }
