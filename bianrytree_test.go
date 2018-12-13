@@ -39,6 +39,11 @@ func testTraversal(t *testing.T, F BinaryNode) {
 		t.Error("pre order traversal fail!")
 	}
 	InOrderResult := []interface{}{"A", "B", "C", "D", "E", "F", "G", "H", "I"}
+	if !testEqual(InOrderMorris(F), InOrderResult) {
+		log(InOrderMorris(F))
+		t.Error("pre order recursion morris fail!")
+	}
+
 	if !testEqual(InOrderRecursion(F, []interface{}{}), InOrderResult) {
 		t.Error("in order recursion traversal fail!")
 	}
@@ -57,7 +62,6 @@ func testTraversal(t *testing.T, F BinaryNode) {
 		log(LevelTraversal(F), "level traversal")
 		t.Error("level traversal fail!")
 	}
-
 }
 
 func TestBinaryTree(t *testing.T) {

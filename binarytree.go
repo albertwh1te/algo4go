@@ -46,6 +46,40 @@ func MaxDepth(root BinaryNode) int {
 	return map[bool]int{true: MaxDepth(*root.left), false: MaxDepth(*root.right)}[MaxDepth(*root.left) > MaxDepth(*root.right)] + 1
 }
 
+// InOrderMorris is a binary tree travelsal algorithms with O(1) space complexity
+// 1.If left child is null, Move to right child.
+// .Else, find the mostright node of left subtree. Two cases arise:
+// 		a) The right child of the mostright already points to the current node, set it to nil. Move to right child of current node.
+// 		b) The right child of the mostright is nil. Set it to current node. Move to left child of current node.
+// 2.Iterate until current node is not nil.
+func InOrderMorris(node BinaryNode) []interface{} {
+	results := []interface{}{}
+	root := &node
+	current := root
+	mostRight := root
+	for current != nil {
+		mostRight = current.left
+		if mostRight != nil {
+			for mostRight.right != nil && mostRight.right != current {
+				mostRight = mostRight.right
+			}
+			if mostRight.right == nil {
+				mostRight.right = current
+				current = current.left
+			} else {
+				mostRight.right = nil
+				results = append(results, current.value)
+				current = current.right
+			}
+		} else {
+			results = append(results, current.value)
+			current = current.right
+		}
+	}
+
+	return results
+}
+
 // PreOrderRecursion parent node is processed before any of its child nodes is done.
 func PreOrderRecursion(root BinaryNode, results []interface{}) []interface{} {
 	results = append(results, root.value)
