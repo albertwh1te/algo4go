@@ -44,5 +44,5 @@ func testQuickSort(t *testing.T) {
 // TestQuickSort is main function for this test
 func TestQuickSort(t *testing.T) {
 	t.Run("test partition", testPartition)
-	t.Run("test quicksort",testQuickSort)
+	t.Run("test quicksort", testQuickSort)
 }
