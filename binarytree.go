@@ -182,7 +182,8 @@ func PostOrder(root BinaryNode) []interface{} {
 // LevelTraversal traversal tree from top to bottom
 func LevelTraversal(root BinaryNode) []interface{} {
 	results := []interface{}{}
-	// TODO: implement a queue
+	// TODO:implement with queue
+	// https://godoc.org/github.com/golang-collections/go-datastructures/queue
 	queue1 := make([]BinaryNode, 0)
 	queue2 := make([]BinaryNode, 0)
 	queue1 = append(queue1, root)
