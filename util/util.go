@@ -1,4 +1,4 @@
-package algo4go
+package util
 
 import (
 	"fmt"
