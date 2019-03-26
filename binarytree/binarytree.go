@@ -1,8 +1,10 @@
-package algo4go
+package binarytree
 
 import (
 	"fmt"
 	"strings"
+
+	"github.com/MarkWh1te/algo4go/stack"
 )
 
 // BinaryNode construct binary tree
@@ -96,7 +98,7 @@ func PreOrderRecursion(root BinaryNode, results []interface{}) []interface{} {
 func PreOrder(root BinaryNode) []interface{} {
 	results := []interface{}{}
 	current := &root
-	stack := NewStack()
+	stack := stack.NewStack()
 	stack.Push(current)
 	for !stack.Empty() {
 		current := stack.Pop().(*BinaryNode)
@@ -127,7 +129,7 @@ func InOrderRecursion(root BinaryNode, results []interface{}) []interface{} {
 // InOrder left mid right
 func InOrder(root BinaryNode) []interface{} {
 	results := []interface{}{}
-	stack := NewStack()
+	stack := stack.NewStack()
 	current := &root
 	for !stack.Empty() || current != nil {
 		if current != nil {
@@ -157,8 +159,8 @@ func PostOrderRecursion(root BinaryNode, results []interface{}) []interface{} {
 // PostOrder run changed preorder travel and put it's result into stack
 func PostOrder(root BinaryNode) []interface{} {
 	results := []interface{}{}
-	stack1 := NewStack()
-	stack2 := NewStack()
+	stack1 := stack.NewStack()
+	stack2 := stack.NewStack()
 	current := &root
 	stack1.Push(current)
 	for !stack1.Empty() {

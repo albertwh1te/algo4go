@@ -1,6 +1,10 @@
-package algo4go
+package binarytree
 
-import "testing"
+import (
+	"testing"
+
+	"github.com/MarkWh1te/algo4go/util"
+)
 
 func testSerialize(t *testing.T, F BinaryNode) {
 	// test empty
@@ -16,8 +20,8 @@ func testSerialize(t *testing.T, F BinaryNode) {
 	}
 	newRoot := DeserializeBinaryTree(serializedTree)
 	PreOrderResult := []interface{}{"F", "B", "A", "D", "C", "E", "G", "I", "H"}
-	if !testEqual(PreOrderRecursion(newRoot, []interface{}{}), PreOrderResult) {
-		log(PreOrderRecursion(newRoot, []interface{}{}))
+	if !util.TestEqual(PreOrderRecursion(newRoot, []interface{}{}), PreOrderResult) {
+		util.Log(PreOrderRecursion(newRoot, []interface{}{}))
 		t.Error("deserialize recursion traversal fail!")
 	}
 
@@ -31,35 +35,35 @@ func testMaxDepth(t *testing.T, F BinaryNode) {
 
 func testTraversal(t *testing.T, F BinaryNode) {
 	PreOrderResult := []interface{}{"F", "B", "A", "D", "C", "E", "G", "I", "H"}
-	if !testEqual(PreOrderRecursion(F, []interface{}{}), PreOrderResult) {
+	if !util.TestEqual(PreOrderRecursion(F, []interface{}{}), PreOrderResult) {
 		t.Error("pre order recursion traversal fail!")
 	}
-	if !testEqual(PreOrder(F), PreOrderResult) {
-		log(PreOrder(F))
+	if !util.TestEqual(PreOrder(F), PreOrderResult) {
+		util.Log(PreOrder(F))
 		t.Error("pre order traversal fail!")
 	}
 	InOrderResult := []interface{}{"A", "B", "C", "D", "E", "F", "G", "H", "I"}
-	if !testEqual(InOrderMorris(F), InOrderResult) {
-		log(InOrderMorris(F))
+	if !util.TestEqual(InOrderMorris(F), InOrderResult) {
+		util.Log(InOrderMorris(F))
 		t.Error("pre order recursion morris fail!")
 	}
 
-	if !testEqual(InOrderRecursion(F, []interface{}{}), InOrderResult) {
+	if !util.TestEqual(InOrderRecursion(F, []interface{}{}), InOrderResult) {
 		t.Error("in order recursion traversal fail!")
 	}
-	if !testEqual(InOrder(F), InOrderResult) {
+	if !util.TestEqual(InOrder(F), InOrderResult) {
 		t.Error("pre order traversal fail!")
 	}
 	PostOrderResult := []interface{}{"A", "C", "E", "D", "B", "H", "I", "G", "F"}
-	if !testEqual(PostOrderRecursion(F, []interface{}{}), PostOrderResult) {
+	if !util.TestEqual(PostOrderRecursion(F, []interface{}{}), PostOrderResult) {
 		t.Error("post order recursion traversal fail!")
 	}
-	if !testEqual(PostOrder(F), PostOrderResult) {
+	if !util.TestEqual(PostOrder(F), PostOrderResult) {
 		t.Error("post order traversal fail!")
 	}
 	LevelTraversalResult := []interface{}{"F", "B", "G", "A", "D", "I", "C", "E", "H"}
-	if !testEqual(LevelTraversal(F), LevelTraversalResult) {
-		log(LevelTraversal(F), "level traversal")
+	if !util.TestEqual(LevelTraversal(F), LevelTraversalResult) {
+		util.Log(LevelTraversal(F), "level traversal")
 		t.Error("level traversal fail!")
 	}
 }
@@ -85,7 +89,7 @@ func TestBinaryTree(t *testing.T) {
 	G.right = &I
 	I.left = &H
 	t.Run("test string tree", func(t *testing.T) {
-		log(F, B, G, A, D, I, C, E, H)
+		util.Log(F, B, G, A, D, I, C, E, H)
 	})
 	t.Run("test max depth", func(t *testing.T) { testMaxDepth(t, F) })
 	t.Run("test traversal", func(t *testing.T) { testTraversal(t, F) })
