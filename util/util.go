@@ -37,8 +37,8 @@ func RandomSlice(minlength int, maxlength int) []int {
 	return result
 }
 
-// get the max int in a slice
-func maxIntSlice(v []int) int {
+// MaxIntSlice return the max int in a slice
+func MaxIntSlice(v []int) int {
 	if len(v) == 0 {
 		return 0
 	}
