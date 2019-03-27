@@ -1,6 +1,10 @@
-package algo4go
+package matrix
 
-import "testing"
+import (
+	"testing"
+
+	"github.com/MarkWh1te/algo4go/util"
+)
 
 func createMatrix(t *testing.T) {
 	randomMatrix := RandomMatrix(3, 4)
@@ -9,10 +13,10 @@ func createMatrix(t *testing.T) {
 
 func testRotateMatrix(t *testing.T) {
 	testMatrix := RandomMatrix(4, 4)
-	log("original matrix: ")
+	util.Log("original matrix: ")
 	LogMatrix(testMatrix)
 	RotateMatrix(&testMatrix)
-	log("rotated matrix: ")
+	util.Log("rotated matrix: ")
 	LogMatrix(testMatrix)
 }
 

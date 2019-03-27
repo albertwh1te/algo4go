@@ -8,11 +8,11 @@ func Partition(arr *[]int, l int, r int, n int) (int, int) {
 	pivot := (*arr)[n]
 	for current <= end {
 		if (*arr)[current] < pivot {
-			swap(&(*arr)[current], &(*arr)[start])
+			util.util.Swap(&(*arr)[current], &(*arr)[start])
 			current++
 			start++
 		} else if (*arr)[current] > pivot {
-			swap(&(*arr)[current], &(*arr)[end])
+			util.Swap(&(*arr)[current], &(*arr)[end])
 			end--
 		} else if (*arr)[current] == pivot {
 			current++

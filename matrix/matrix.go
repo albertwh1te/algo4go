@@ -1,4 +1,6 @@
-package algo4go
+package matrix
+
+import "github.com/MarkWh1te/algo4go/util"
 
 // EmptyMatrix generate empty 2-D matrix
 func EmptyMatrix(row int, col int) [][]int {
@@ -15,7 +17,7 @@ func RandomMatrix(row int, col int) [][]int {
 	for r := 0; r < row; r++ {
 		for c := 0; c < col; c++ {
 			// use 10~99 for good print result
-			matrix[r][c] = random(10, 99)
+			matrix[r][c] = util.Random(10, 99)
 		}
 	}
 	return matrix
@@ -25,11 +27,11 @@ func RandomMatrix(row int, col int) [][]int {
 func LogMatrix(m [][]int) {
 	for i := 0; i < len(m); i++ {
 		if i == 0 {
-			log("[", m[i])
+			util.Log("[", m[i])
 		} else if i == len(m)-1 {
-			log(" ", m[i], "]")
+			util.Log(" ", m[i], "]")
 		} else {
-			log(" ", m[i])
+			util.Log(" ", m[i])
 		}
 	}
 }

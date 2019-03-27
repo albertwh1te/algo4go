@@ -1,9 +1,13 @@
 package algo4go
 
+import (
+	"github.com/MarkWh1te/algo4go/util"
+)
+
 // MaxHeapInsert keeps max heap and insert element into Maxheap
 func MaxHeapInsert(arr *[]int, index int) {
 	for (*arr)[index] > (*arr)[(index-1)/2] {
-		swap(&((*arr)[index]), &((*arr)[(index-1)/2]))
+		util.Swap(&((*arr)[index]), &((*arr)[(index-1)/2]))
 		index = (index - 1) / 2
 	}
 }
@@ -26,7 +30,7 @@ func MaxHeapify(arr *[]int, index int, size int) {
 		if largest == index {
 			return
 		}
-		swap(&((*arr)[largest]), &((*arr)[index]))
+		util.Swap(&((*arr)[largest]), &((*arr)[index]))
 		index = largest
 		left = index*2 + 1
 		right = index*2 + 2
@@ -43,7 +47,7 @@ func HeapSort(arr *[]int) {
 		MaxHeapInsert(arr, i)
 	}
 	for n := size - 1; n >= 0; n-- {
-		swap(&((*arr)[0]), &((*arr)[n]))
+		util.Swap(&((*arr)[0]), &((*arr)[n]))
 		MaxHeapify(arr, 0, n)
 	}
 }

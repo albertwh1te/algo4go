@@ -4,7 +4,7 @@ package algo4go
 func InsertionSort(arr *[]int, left int, right int) {
 	for i := left; i <= right; i++ {
 		for j := i; (j > 0) && (*arr)[j-1] > (*arr)[j]; j-- {
-			swap(&(*arr)[j-1], &(*arr)[j])
+			util.Swap(&(*arr)[j-1], &(*arr)[j])
 		}
 	}
 }
