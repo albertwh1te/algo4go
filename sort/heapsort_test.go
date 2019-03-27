@@ -1,25 +1,27 @@
-package algo4go
+package sort
 
 import (
 	"sort"
 	"testing"
+
+	"github.com/MarkWh1te/algo4go/util"
 )
 
 // TestHeap generate test slice and check it's partition
 func TestHeap(t *testing.T) {
-	log("Heap Test start")
+	util.Log("Heap Test start")
 	// init some viriable
 	var test []int
 	times := 200
 	t.Run("test heap insert", func(t *testing.T) {
 		for time := 1; time < times; time++ {
 			// rest values
-			test = randomSlice(7, 103)
+			test = util.RandomSlice(7, 103)
 			for i := 0; i < len(test); i++ {
 				MaxHeapInsert(&test, i)
 			}
-			if !(maxIntSlice(test) == test[0]) {
-				t.Errorf("max heap build fail :( biggest in origin is %v top on max heap is %v ", maxIntSlice(test), test[0])
+			if !(util.MaxIntSlice(test) == test[0]) {
+				t.Errorf("max heap build fail :( biggest in origin is %v top on max heap is %v ", util.MaxIntSlice(test), test[0])
 				t.Errorf("test is %v", test)
 			}
 		}
@@ -30,7 +32,7 @@ func TestHeap(t *testing.T) {
 		HeapSort(&test)
 		times := 200
 		for time := 1; time < times; time++ {
-			test = randomSlice(7, 103)
+			test = util.RandomSlice(7, 103)
 			HeapSort(&test)
 			if !sort.IntsAreSorted(test) {
 				t.Errorf("%v is not sorted", test)

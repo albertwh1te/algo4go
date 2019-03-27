@@ -113,7 +113,7 @@ func PreOrder(root BinaryNode) []interface{} {
 	return results
 }
 
-// InOrderRecursion is a topologically sorted one, because a parent node is processed before any of its child nodes is done.
+// InOrderRecursion is a topoutil.Logically sorted one, because a parent node is processed before any of its child nodes is done.
 // NOTE:In a binary search tree, in-order traversal retrieves data in sorted orde
 func InOrderRecursion(root BinaryNode, results []interface{}) []interface{} {
 	if root.left != nil {

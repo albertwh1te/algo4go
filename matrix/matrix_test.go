@@ -7,17 +7,17 @@ import (
 )
 
 func createMatrix(t *testing.T) {
-	randomMatrix := RandomMatrix(3, 4)
-	LogMatrix(randomMatrix)
+	util.RandomMatrix := util.RandomMatrix(3, 4)
+	util.LogMatrix(util.RandomMatrix)
 }
 
 func testRotateMatrix(t *testing.T) {
-	testMatrix := RandomMatrix(4, 4)
+	testMatrix := util.RandomMatrix(4, 4)
 	util.Log("original matrix: ")
-	LogMatrix(testMatrix)
+	util.LogMatrix(testMatrix)
 	RotateMatrix(&testMatrix)
 	util.Log("rotated matrix: ")
-	LogMatrix(testMatrix)
+	util.LogMatrix(testMatrix)
 }
 
 // TestMatrix is main test for matrix

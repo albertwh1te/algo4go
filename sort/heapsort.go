@@ -1,8 +1,9 @@
-package algo4go
+package sort
 
 import (
 	"github.com/MarkWh1te/algo4go/util"
 )
+
 
 // MaxHeapInsert keeps max heap and insert element into Maxheap
 func MaxHeapInsert(arr *[]int, index int) {
@@ -37,7 +38,7 @@ func MaxHeapify(arr *[]int, index int, size int) {
 	}
 }
 
-// HeapSort runs in O(nlog(n)) but cache poorly
+// HeapSort runs in O(nutil.Log(n)) but cache poorly
 func HeapSort(arr *[]int) {
 	size := len(*arr)
 	if len(*arr) < 2 {

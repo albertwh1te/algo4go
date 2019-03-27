@@ -1,4 +1,4 @@
-package algo4go
+package sort
 
 import (
 	"sort"
@@ -10,7 +10,7 @@ func testPartition(t *testing.T) {
 	var test []int
 	times := 200
 	for time := 1; time < times; time++ {
-		test = randomSlice(7, 103)
+		test = util.RandomSlice(7, 103)
 		length := len(test)
 		pivot := test[length-1]
 		start, end := Partition(&test, 0, length-1, length-1)
@@ -33,7 +33,7 @@ func testQuickSort(t *testing.T) {
 	var test []int
 	times := 200
 	for time := 1; time < times; time++ {
-		test = randomSlice(7, 103)
+		test = util.RandomSlice(7, 103)
 		QuickSort(&test, 0, len(test)-1)
 		if !sort.IntsAreSorted(test) {
 			t.Errorf("%v is not sorted", test)
