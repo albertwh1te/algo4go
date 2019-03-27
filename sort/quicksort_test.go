@@ -3,6 +3,8 @@ package sort
 import (
 	"sort"
 	"testing"
+
+	"github.com/MarkWh1te/algo4go/util"
 )
 
 // testPartition generate test slice and check it's partition

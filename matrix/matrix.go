@@ -11,8 +11,8 @@ func EmptyMatrix(row int, col int) [][]int {
 	return matrix
 }
 
-// util.RandomMatrix generate util.Random numbers in matrix
-func util.RandomMatrix(row int, col int) [][]int {
+// RandomMatrix generate util.Random numbers in matrix
+func RandomMatrix(row int, col int) [][]int {
 	matrix := EmptyMatrix(row, col)
 	for r := 0; r < row; r++ {
 		for c := 0; c < col; c++ {
@@ -23,8 +23,8 @@ func util.RandomMatrix(row int, col int) [][]int {
 	return matrix
 }
 
-// util.LogMatrix is a function print 2-D matrix line by line
-func util.LogMatrix(m [][]int) {
+// LogMatrix is a function print 2-D matrix line by line
+func LogMatrix(m [][]int) {
 	for i := 0; i < len(m); i++ {
 		if i == 0 {
 			util.Log("[", m[i])
