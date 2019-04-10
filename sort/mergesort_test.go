@@ -9,9 +9,10 @@ import (
 
 func testMergeSort(t *testing.T) {
 	var test []int
-	times := 200
+	times := 2
+	// times := 200
 	for time := 1; time < times; time++ {
-		test = util.RandomSlice(7, 1030)
+		test = util.RandomSlice(7, 103)
 		mergeSorted := MergeSort(&test, 0, len(test)-1)
 		if !sort.IntsAreSorted(mergeSorted) {
 			t.Errorf("%v is not sorted", test)

@@ -2,11 +2,11 @@ package sort
 
 // MergeSort is an efficient, general-purpose, comparison-based sorting algorithm.
 func MergeSort(arr *[]int, left int, right int) []int {
-	if (right-left) <= 1 || (left-right) <= 1 {
-		middle := (left + right) >> 2
+	if (right - left) <= 1 {
+		middle := left + (right-left)>>1
 		return (*arr)[middle : middle+1]
 	}
-	middle := (left + right) >> 2
+	middle := (left + right) >> 1
 	leftPart := MergeSort(arr, left, middle)
 	rightPart := MergeSort(arr, middle+1, right)
 
@@ -15,7 +15,7 @@ func MergeSort(arr *[]int, left int, right int) []int {
 	i := 0
 	j := 0
 	for i < len(leftPart) && j < len(rightPart) {
-		if leftPart[i] >= rightPart[j] {
+		if leftPart[i] <= rightPart[j] {
 			result = append(result, leftPart[i])
 			i++
 		} else {
