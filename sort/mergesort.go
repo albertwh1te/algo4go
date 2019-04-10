@@ -6,7 +6,7 @@ func MergeSort(arr *[]int, left int, right int) []int {
 		middle := left + (right-left)>>1
 		return (*arr)[middle : middle+1]
 	}
-	middle := (left + right) >> 1
+	middle := left + (right-left)>>1
 	leftPart := MergeSort(arr, left, middle)
 	rightPart := MergeSort(arr, middle+1, right)
 
