@@ -14,7 +14,7 @@ type BinaryNode struct {
 	right *BinaryNode
 }
 
-func (node BinaryNode) String() string {
+func (node *BinaryNode) String() string {
 	result := fmt.Sprintf("%v", node.value)
 	if node.left != nil {
 		result = fmt.Sprintf("%v-", node.left.value) + result
